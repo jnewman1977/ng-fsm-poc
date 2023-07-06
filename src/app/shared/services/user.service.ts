@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { UserGroup } from "../../features/settings/state";
 import { delay, Observable, share, timeout } from "rxjs";
+import { UserGroup } from "../models";
 
 @Injectable({
     providedIn: 'root'

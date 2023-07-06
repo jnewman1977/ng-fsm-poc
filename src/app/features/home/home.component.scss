@@ -9,4 +9,10 @@ section[main-content] {
   height: 100%;
   padding: 0.5rem 0.5rem 0;
   margin: 0;
+
+  h4 {
+    padding: 0 0 .5rem;
+    margin: 0 0 .5rem;
+    border-bottom: solid #ddd 1px;
+  }
 }

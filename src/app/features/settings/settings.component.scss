@@ -37,7 +37,8 @@ ul[data-list] {
 }
 
 section[user-groups] {
-  overflow: auto;
+  overflow: hidden;
+  height: 100%;
 }
 
 section[state-view] {
@@ -113,6 +114,8 @@ section[state-view] {
 ul[user-groups] {
   margin: 0;
   padding: 0;
+  height: 100%;
+  overflow: auto;
 }
 
 ul[users] {
@@ -131,6 +134,8 @@ ul[users] {
 }
 
 [spinner-container] {
+  width: 100px;
+  height: 100px;
   margin: auto;
 }
 

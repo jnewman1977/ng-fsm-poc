@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from "./home.routing.module";
 import { SpinnerModule } from "../../shared/components/spinner/spinner.module";
@@ -12,7 +12,8 @@ import { SpinnerModule } from "../../shared/components/spinner/spinner.module";
     imports: [
         CommonModule,
         HomeRoutingModule,
-        SpinnerModule
+        SpinnerModule,
+        NgOptimizedImage
     ]
 })
 export class HomeModule {

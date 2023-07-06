@@ -6,7 +6,9 @@
 
     <section error-view *ngIf="(hasErrors$ | async)">
         <header>Errors:</header>
-        <label *ngFor="let error of (errors$ | async)">{{ error.message }}</label>
+        <ul>
+            <li *ngFor="let error of (errors$ | async)">{{ error.message }}</li>
+        </ul>
     </section>
 
     <section data-view user-groups>
@@ -49,12 +51,16 @@
                 <span>{{ (state$ | async)?.value }}</span>
             </li>
             <li>
-                <label>Error Count:</label>
-                <span>{{ (errors$ | async)?.length || 0 }}</span>
-            </li>
-            <li>
                 <label>User Groups Count:</label>
                 <span>{{ (userGroups$ | async)?.length || 0 }}</span>
+            </li>
+            <li>
+                <label>Show NoItems Msg:</label>
+                <span>{{ (showNoItemsMessage$ | async) || false }}</span>
+            </li>
+            <li>
+                <label>Error Count:</label>
+                <span>{{ (errors$ | async)?.length || 0 }}</span>
             </li>
         </ul>
     </fieldset>

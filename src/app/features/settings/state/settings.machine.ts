@@ -36,6 +36,9 @@ export const SettingsMachineConfig: MachineConfig<SettingsContext, SettingsSchem
         },
 
         Error: {
+            entry: assign({
+                showNoItemsMessage: () => true
+            }),
             type: 'final'
         }
     },

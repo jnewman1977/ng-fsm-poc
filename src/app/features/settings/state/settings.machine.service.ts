@@ -41,7 +41,8 @@ export class SettingsMachineService {
 
     public errors$ = from(this.context$).pipe(map(context => context.errors));
 
-    public showNoItemsMessage$ = from(this.context$).pipe(map(context => context.showNoItemsMessage));
+    public showNoItemsMessage$ = from(this.context$)
+            .pipe(map(context => context.showNoItemsMessage));
 
     public userGroups$ = from(this.context$).pipe(map(context => context.userGroups));
 

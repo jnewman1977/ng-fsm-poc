@@ -53,7 +53,7 @@ section[state-view] {
   border-left: solid #ddd 1px;
 
   header {
-    margin: 0 0 0.5rem;
+    margin: .5rem;
   }
 
   fieldset {
@@ -158,5 +158,18 @@ ul[users] {
   border-bottom: solid #ddd 1px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+
+  header {
+    flex-basis: 100%
+  }
+
+  [toolbar-buttons] {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    button {
+      margin: 0 0 0 .25rem;
+    }
+  }
 }

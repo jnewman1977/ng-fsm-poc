@@ -4,7 +4,7 @@ export interface SettingsSchema {
         Idle: {};
         Loading: {};
         Unloading: {};
-        Ready: {};
+        DisplayItems: {};
         Error: {};
     }
 }

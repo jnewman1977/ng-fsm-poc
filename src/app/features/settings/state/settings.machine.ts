@@ -11,14 +11,17 @@ export const SettingsMachineConfig: MachineConfig<SettingsContext, SettingsSchem
         Idle: {},
 
         Loading: {
-            entry: 'initialize',
+            entry: [
+                'initialize',
+                'showLoadingSpinner'
+            ],
             invoke: {
                 src: 'loadUserGroups',
                 onDone: {
                     actions: assign({
                         userGroups: (_, ev) => ev.data
                     }),
-                    target: 'Ready'
+                    target: 'DisplayItems'
                 },
                 onError: {
                     actions: assign({
@@ -35,22 +38,28 @@ export const SettingsMachineConfig: MachineConfig<SettingsContext, SettingsSchem
             }
         },
 
-        Unloading: {},
+        Unloading: {
+            entry: 'initialize'
+        },
 
-        Ready: {
-            entry: 'checkForNoItems'
+        DisplayItems: {
+            entry: [
+                'hideLoadingSpinner',
+                'checkForNoItems'
+            ]
         },
 
         Error: {
-            entry: assign({
-                showNoItemsMessage: () => true
-            }),
-            type: 'final'
+            entry: [
+                'hideLoadingSpinner',
+                'showNoItemsMessage'
+            ]
         }
     },
 
     context: {
         errors: [],
+        showLoadingSpinner: false,
         showNoItemsMessage: false,
         userGroups: []
     },

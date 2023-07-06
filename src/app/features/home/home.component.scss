@@ -34,14 +34,21 @@ section[main-content] {
 
 section[split-content] {
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 70% 30%;
 
   section[figs] {
     padding: 0.5rem 0 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
   }
 
   section[links] {
     padding: 0.5rem 0 0 1rem;
     border-left: #ddd solid 1px;
+
+    a:hover {
+      color: orange;
+    }
   }
 }

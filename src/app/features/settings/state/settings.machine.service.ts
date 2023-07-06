@@ -18,8 +18,19 @@ export class SettingsMachineService {
         guards: {},
         actions: {
             initialize: assign({
+                showLoadingSpinner: () => false,
+                showNoItemsMessage: () => false,
                 userGroups: () => [],
-                showNoItemsMessage: () => false
+                errors: () => []
+            }),
+            showLoadingSpinner: assign({
+                showLoadingSpinner: () => true
+            }),
+            hideLoadingSpinner: assign({
+                showLoadingSpinner: () => false
+            }),
+            showNoItemsMessage: assign({
+                showNoItemsMessage: () => true
             }),
             checkForNoItems: assign({
                 showNoItemsMessage: (ctx) => ctx.userGroups.length === 0
@@ -39,12 +50,17 @@ export class SettingsMachineService {
     public context$ = from(this.state$)
             .pipe(map(state => state.context));
 
-    public errors$ = from(this.context$).pipe(map(context => context.errors));
+    public errors$ = from(this.context$)
+            .pipe(map(context => context.errors));
+
+    public showLoadingSpinner$ = from(this.context$)
+            .pipe(map(context => context.showLoadingSpinner));
 
     public showNoItemsMessage$ = from(this.context$)
             .pipe(map(context => context.showNoItemsMessage));
 
-    public userGroups$ = from(this.context$).pipe(map(context => context.userGroups));
+    public userGroups$ = from(this.context$)
+            .pipe(map(context => context.userGroups));
 
     send(event: SettingsEvent): void {
         this.service.send(event);

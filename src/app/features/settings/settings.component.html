@@ -1,7 +1,11 @@
 <section content-area>
     <section toolbar-view>
-        <h3>Settings</h3>
-        <button (click)="refresh()">Refresh</button>
+        <header>
+            <h3>Settings</h3>
+        </header>
+        <section toolbar-buttons>
+            <button (click)="refresh()">Refresh</button>
+        </section>
     </section>
 
     <section error-view *ngIf="(hasErrors$ | async)">
@@ -16,7 +20,7 @@
             <span>User Groups:</span>
         </header>
 
-        <section spinner-container *ngIf="(state$ | async)?.value === 'Loading'">
+        <section spinner-container *ngIf="(showLoadingSpinner$ | async) || false">
             <app-spinner></app-spinner>
         </section>
 
@@ -43,7 +47,7 @@
 </section>
 
 <section state-view>
-    <header>Metadata</header>
+    <header>State Metadata</header>
     <fieldset>
         <ul data-list>
             <li>
@@ -53,6 +57,10 @@
             <li>
                 <label>User Groups Count:</label>
                 <span>{{ (userGroups$ | async)?.length || 0 }}</span>
+            </li>
+            <li>
+                <label>Show Spinner:</label>
+                <span>{{ (showLoadingSpinner$ | async) || false }}</span>
             </li>
             <li>
                 <label>Show NoItems Msg:</label>

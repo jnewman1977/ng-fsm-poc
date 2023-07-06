@@ -1,5 +1,3 @@
-import { Observable } from 'rxjs';
-
 export interface SettingsContext {
     errors: { message: string }[];
     showNoItemsMessage: boolean;

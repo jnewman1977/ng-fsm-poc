@@ -11,15 +11,12 @@ export class SettingsComponent implements OnInit, OnDestroy {
 
     public state$ = from(this.settingsMachine.state$);
 
-    public context$ = from(this.settingsMachine.context$);
-
+    public showNoItemsMessage$ = from(this.settingsMachine.showNoItemsMessage$);
     public userGroups$ = from(this.settingsMachine.userGroups$);
 
     public errors$ = from(this.settingsMachine.errors$);
-
     public hasErrors$ = from(this.errors$).pipe(map(errors => (errors || []).length > 0));
 
-    public showNoItemsMessage$ = from(this.settingsMachine.showNoItemsMessage$);
 
     constructor(private settingsMachine: SettingsMachineService) {
     }

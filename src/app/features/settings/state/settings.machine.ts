@@ -1,8 +1,7 @@
 import { assign, MachineConfig } from 'xstate';
-import { SettingsContext, UserGroup } from './settings.context';
+import { SettingsContext } from './settings.context';
 import { SettingsSchema } from "./settings.schema";
 import { SettingsEvent } from "./settings.events";
-import { from } from "rxjs";
 
 export const SettingsMachineConfig: MachineConfig<SettingsContext, SettingsSchema, SettingsEvent> = {
     id: 'settings',
@@ -30,8 +29,7 @@ export const SettingsMachineConfig: MachineConfig<SettingsContext, SettingsSchem
             }
         },
 
-        Unloading: {
-        },
+        Unloading: {},
 
         Ready: {
             entry: 'checkForNoItems'

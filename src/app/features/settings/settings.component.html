@@ -1,0 +1,67 @@
+<section content-area>
+    <section toolbar-view>
+        <h3>Settings</h3>
+        <button (click)="refresh()">Refresh</button>
+    </section>
+
+    <section error-view *ngIf="(hasErrors$ | async)">
+        <header>Errors:</header>
+        <label *ngFor="let error of (errors$ | async)">{{ error.message }}</label>
+    </section>
+
+    <section data-view user-groups>
+        <header>
+            <span>User Groups:</span>
+        </header>
+
+        <section spinner-container *ngIf="(state$ | async)?.value === 'Loading'">
+            <app-spinner></app-spinner>
+        </section>
+
+        <ng-container *ngIf="showNoItemsMessage$ | async; else userGroupList;">
+            <div>No items loaded.</div>
+        </ng-container>
+
+        <ng-template #userGroupList>
+            <ul data-list user-groups>
+                <li data-list-item *ngFor="let userGroup of userGroups$ | async">
+                    <header>
+                        <label>{{ userGroup.name }} <sup>({{ userGroup.users.length }})</sup></label>
+                    </header>
+                    <ul data-list users>
+                        <li *ngFor="let user of userGroup.users">
+                            <label>{{ user.name }}</label>
+                            <span>{{ user.email }}</span>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </ng-template>
+    </section>
+</section>
+
+<section state-view>
+    <header>Metadata</header>
+    <fieldset>
+        <ul data-list>
+            <li>
+                <label>State:</label>
+                <span>{{ (state$ | async)?.value }}</span>
+            </li>
+            <li>
+                <label>Error Count:</label>
+                <span>{{ (errors$ | async)?.length || 0 }}</span>
+            </li>
+            <li>
+                <label>User Groups Count:</label>
+                <span>{{ (userGroups$ | async)?.length || 0 }}</span>
+            </li>
+        </ul>
+    </fieldset>
+    <section json-view>
+        <header>Context:</header>
+        <section json-content>
+            <pre><div>{{ (state$ | async)?.context | json }}</div></pre>
+        </section>
+    </section>
+</section>

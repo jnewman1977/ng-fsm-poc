@@ -22,7 +22,13 @@ export const SettingsMachineConfig: MachineConfig<SettingsContext, SettingsSchem
                 },
                 onError: {
                     actions: assign({
-                        errors: (ctx, ev) => [...ctx.errors, ev.data]
+                        errors: (ctx, ev) => [
+                            ...ctx.errors,
+                            {
+                                message: 'A problem occurred while loading the data from the server.',
+                                details: ev.data
+                            }
+                        ]
                     }),
                     target: 'Error'
                 }

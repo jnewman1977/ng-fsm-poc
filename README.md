@@ -1,6 +1,6 @@
-# NgFsm
+# NgFsmPoc
 
-**_Component State POC_**
+**_Component (FSM) State POC_**
 
 ![](./src/assets/images/logo.png)
 ![State Chart](./src/assets/images/machine-diag.png)

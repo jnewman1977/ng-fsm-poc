@@ -4,7 +4,7 @@
 
 <div style="height: 64px; display: flex; flex-direction: row; justify-content: start; align-items: center; font-size: 64px; text-align: center;">
     <img alt="angular" src="https://angular.io/assets/images/logos/angular/logo-nav@2x.png" height="64" style="text-align: center;">
-    <span style="width:64px;height:64px;position: relative;margin-top: -64px;margin-right:-16px;">&#8330;</span>
+    <span>&#8330;</span>
     <img alt="xstate" src="https://raw.githubusercontent.com/statelyai/public-assets/main/logos/xstate-logo-white-nobg.svg" height="64" style="text-align: center;">
 </div>
 
